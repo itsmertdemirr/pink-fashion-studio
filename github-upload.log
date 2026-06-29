@@ -1,0 +1,165 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260629233013
+Username: MEDINA\medin
+RunAs User: MEDINA\medin
+Configuration Name: 
+Machine: MEDINA (Microsoft Windows NT 10.0.26200.0)
+Host Application: powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\medin\OneDrive\Desktop\pink-fashion-studio-github-auto-v1.0.3\tools\github-manager.ps1 -Mode Publish
+Process ID: 26160
+PSVersion: 5.1.26100.8655
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8655
+BuildVersion: 10.0.26100.8655
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Pink Fashion Studio - GitHub Auto Publisher v1.0.3
+Developer: Mert Demir | Made for Sude
+[OK] git version 2.54.0.windows.1
+[OK] gh version 2.92.0 (2026-04-28)
+[OK] Project files verified.
+
+==> Checking GitHub account
+[OK] GitHub account: itsmertdemirr
+
+==> Creating local Git repository
+Initialized empty Git repository in C:/Users/medin/OneDrive/Desktop/pink-fashion-studio-github-auto-v1.0.3/.git/
+warning: in the working copy of '.github/workflows/pages.yml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'CONTRIBUTING.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'GITHUB_OTOMATIK_YUKLEME.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LICENSE', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'assets/css/styles.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'assets/icons/favicon.svg', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'assets/icons/icon-192.svg', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'assets/icons/icon-512.svg', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'assets/js/app.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'manifest.webmanifest', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'sw.js', LF will be replaced by CRLF the next time Git touches it
+[main (root-commit) 282f45a] Initial release: Pink Fashion Studio
+ 21 files changed, 1871 insertions(+)
+ create mode 100644 .github/workflows/pages.yml
+ create mode 100644 .gitignore
+ create mode 100644 .nojekyll
+ create mode 100644 AUTO_PUBLISHER_VERSION.txt
+ create mode 100644 BASLAT_GITHUB_YUKLE.bat
+ create mode 100644 CONTRIBUTING.md
+ create mode 100644 GITHUBA_GUNCELLE.bat
+ create mode 100644 GITHUB_OTOMATIK_YUKLEME.md
+ create mode 100644 LICENSE
+ create mode 100644 README.md
+ create mode 100644 assets/css/styles.css
+ create mode 100644 assets/icons/favicon.svg
+ create mode 100644 assets/icons/icon-192.svg
+ create mode 100644 assets/icons/icon-512.svg
+ create mode 100644 assets/js/app.js
+ create mode 100644 index.html
+ create mode 100644 manifest.webmanifest
+ create mode 100644 screenshots/mobile-preview.png
+ create mode 100644 screenshots/preview.png
+ create mode 100644 sw.js
+ create mode 100644 tools/github-manager.ps1
+[OK] Changes committed.
+
+==> Creating GitHub repository: itsmertdemirr/pink-fashion-studio
+GraphQL: Resource not accessible by personal access token (createRepository)
+PS>TerminatingError(): "Command failed with exit code 1: gh repo create itsmertdemirr/pink-fashion-studio --public --description Mobile friendly HTML fashion dress-up game made for Sude. --source C:\Users\medin\OneDrive\Desktop\pink-fashion-studio-github-auto-v1.0.3 --remote origin
+GraphQL: Resource not accessible by personal access token (createRepository)"
+>> TerminatingError(): "Command failed with exit code 1: gh repo create itsmertdemirr/pink-fashion-studio --public --description Mobile friendly HTML fashion dress-up game made for Sude. --source C:\Users\medin\OneDrive\Desktop\pink-fashion-studio-github-auto-v1.0.3 --remote origin
+GraphQL: Resource not accessible by personal access token (createRepository)"
+
+[ERROR] Command failed with exit code 1: gh repo create itsmertdemirr/pink-fashion-studio --public --description Mobile friendly HTML fashion dress-up game made for Sude. --source C:\Users\medin\OneDrive\Desktop\pink-fashion-studio-github-auto-v1.0.3 --remote origin
+GraphQL: Resource not accessible by personal access token (createRepository)
+Log file: C:\Users\medin\OneDrive\Desktop\pink-fashion-studio-github-auto-v1.0.3\github-upload.log
+**********************
+Windows PowerShell transcript end
+End time: 20260629233028
+**********************
+**********************
+Windows PowerShell transcript start
+Start time: 20260629233138
+Username: MEDINA\medin
+RunAs User: MEDINA\medin
+Configuration Name: 
+Machine: MEDINA (Microsoft Windows NT 10.0.26200.0)
+Host Application: powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\medin\OneDrive\Desktop\pink-fashion-studio-github-auto-v1.0.3\tools\github-manager.ps1 -Mode Publish
+Process ID: 26984
+PSVersion: 5.1.26100.8655
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8655
+BuildVersion: 10.0.26100.8655
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Pink Fashion Studio - GitHub Auto Publisher v1.0.3
+Developer: Mert Demir | Made for Sude
+[OK] git version 2.54.0.windows.1
+[OK] gh version 2.92.0 (2026-04-28)
+[OK] Project files verified.
+
+==> Checking GitHub account
+[OK] GitHub account: itsmertdemirr
+[OK] No new changes. Existing commit will be used.
+
+==> Creating GitHub repository: itsmertdemirr/pink-fashion-studio
+GraphQL: Resource not accessible by personal access token (createRepository)
+PS>TerminatingError(): "Command failed with exit code 1: gh repo create itsmertdemirr/pink-fashion-studio --public --description Mobile friendly HTML fashion dress-up game made for Sude. --source C:\Users\medin\OneDrive\Desktop\pink-fashion-studio-github-auto-v1.0.3 --remote origin
+GraphQL: Resource not accessible by personal access token (createRepository)"
+>> TerminatingError(): "Command failed with exit code 1: gh repo create itsmertdemirr/pink-fashion-studio --public --description Mobile friendly HTML fashion dress-up game made for Sude. --source C:\Users\medin\OneDrive\Desktop\pink-fashion-studio-github-auto-v1.0.3 --remote origin
+GraphQL: Resource not accessible by personal access token (createRepository)"
+
+[ERROR] Command failed with exit code 1: gh repo create itsmertdemirr/pink-fashion-studio --public --description Mobile friendly HTML fashion dress-up game made for Sude. --source C:\Users\medin\OneDrive\Desktop\pink-fashion-studio-github-auto-v1.0.3 --remote origin
+GraphQL: Resource not accessible by personal access token (createRepository)
+Log file: C:\Users\medin\OneDrive\Desktop\pink-fashion-studio-github-auto-v1.0.3\github-upload.log
+**********************
+Windows PowerShell transcript end
+End time: 20260629233149
+**********************
+**********************
+Windows PowerShell transcript start
+Start time: 20260629233209
+Username: MEDINA\medin
+RunAs User: MEDINA\medin
+Configuration Name: 
+Machine: MEDINA (Microsoft Windows NT 10.0.26200.0)
+Host Application: powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\medin\OneDrive\Desktop\pink-fashion-studio-github-auto-v1.0.3\tools\github-manager.ps1 -Mode Publish
+Process ID: 20572
+PSVersion: 5.1.26100.8655
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8655
+BuildVersion: 10.0.26100.8655
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Pink Fashion Studio - GitHub Auto Publisher v1.0.3
+Developer: Mert Demir | Made for Sude
+[OK] git version 2.54.0.windows.1
+[OK] gh version 2.92.0 (2026-04-28)
+[OK] Project files verified.
+
+==> Checking GitHub account
+[OK] GitHub account: itsmertdemirr
+[OK] No new changes. Existing commit will be used.
+
+==> Connecting to existing GitHub repository: itsmertdemirr/pink-fashion-studio
+
+==> Pushing files to GitHub
+remote: Permission to itsmertdemirr/pink-fashion-studio.git denied to itsmertdemirr.
+fatal: unable to access 'https://github.com/itsmertdemirr/pink-fashion-studio.git/': The requested URL returned error: 403
+PS>TerminatingError(): "Git push failed. Check repository: https://github.com/itsmertdemirr/pink-fashion-studio"
+
+[ERROR] Git push failed. Check repository: https://github.com/itsmertdemirr/pink-fashion-studio
+Log file: C:\Users\medin\OneDrive\Desktop\pink-fashion-studio-github-auto-v1.0.3\github-upload.log
+**********************
+Windows PowerShell transcript end
+End time: 20260629233217
+**********************

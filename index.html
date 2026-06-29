@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f72585">
+  <meta name="description" content="HTML, CSS ve JavaScript ile geliştirilmiş modern giydirmece oyunu.">
+  <meta name="author" content="Mert Demir">
+  <title>Pink Fashion Studio | Giydirmece Oyunu</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <noscript>Bu oyunu çalıştırmak için JavaScript'i etkinleştirmen gerekiyor.</noscript>
+
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div class="sparkles" aria-hidden="true">
+    <span>✦</span><span>♡</span><span>✧</span><span>✦</span><span>♡</span>
+  </div>
+
+  <main class="app-shell">
+    <header class="topbar glass-card">
+      <a class="brand" href="#" aria-label="Pink Fashion Studio ana sayfa">
+        <span class="brand-mark">PF</span>
+        <span>
+          <strong>Pink Fashion Studio</strong>
+          <small>Giydir, tasarla, puanını yükselt</small>
+        </span>
+      </a>
+
+      <div class="header-actions" aria-label="Oyun kontrolleri">
+        <button class="icon-button" id="soundButton" type="button" title="Sesi aç veya kapat" aria-pressed="true">🔊</button>
+        <button class="soft-button" id="undoButton" type="button" title="Geri al">↶ <span>Geri al</span></button>
+        <button class="soft-button" id="redoButton" type="button" title="Yinele">↷ <span>Yinele</span></button>
+        <button class="primary-button" id="randomButton" type="button">✨ Rastgele stil</button>
+      </div>
+    </header>
+
+    <section class="challenge-strip glass-card" aria-labelledby="challengeTitle">
+      <div class="challenge-copy">
+        <span class="eyebrow">Günün moda görevi</span>
+        <h1 id="challengeTitle">Pembe Gala</h1>
+        <p id="challengeDescription">Gecenin yıldızı olacak şık bir kombin hazırla.</p>
+      </div>
+      <div class="score-area">
+        <div class="stars" id="liveStars" aria-label="Canlı yıldız puanı">☆☆☆☆☆</div>
+        <div class="score-meter" aria-hidden="true"><span id="scoreBar"></span></div>
+        <strong id="scoreText">0 / 100</strong>
+        <button class="secondary-button" id="evaluateButton" type="button">Kombini değerlendir</button>
+      </div>
+    </section>
+
+    <section class="game-layout">
+      <section class="stage-card glass-card" aria-label="Moda sahnesi">
+        <div class="stage-toolbar">
+          <div class="look-name-wrap">
+            <label for="lookName">Kombin adı</label>
+            <input id="lookName" maxlength="36" value="Pembe Rüya" autocomplete="off">
+          </div>
+          <div class="stage-actions">
+            <button class="mini-button" id="saveLookButton" type="button">💾 Kaydet</button>
+            <button class="mini-button" id="downloadButton" type="button">📷 PNG indir</button>
+            <button class="mini-button danger" id="resetButton" type="button">↺ Sıfırla</button>
+          </div>
+        </div>
+
+        <div class="stage" id="stage">
+          <div class="stage-badge" id="stageBadge">Gala Gecesi</div>
+          <svg id="fashionSvg" viewBox="0 0 600 840" role="img" aria-label="Giydirilebilir moda karakteri" style="--skin:#efbd9e;--hair:#e7b23c;--hair-dark:#a96c1b;--top:#ff4f9a;--bottom:#8b5cf6;--dress:#f72585;--jacket:#fff8fc;--shoe:#f72585;--bag:#7c3aed;--eyes:#4e7ea8;--lips:#e94c7b;">
+            <defs>
+              <linearGradient id="skinGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="color-mix(in srgb, var(--skin) 76%, white)"></stop>
+                <stop offset="1" stop-color="var(--skin)"></stop>
+              </linearGradient>
+              <linearGradient id="hairGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="var(--hair)"></stop>
+                <stop offset="1" stop-color="var(--hair-dark)"></stop>
+              </linearGradient>
+              <linearGradient id="dressGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="color-mix(in srgb, var(--dress) 72%, white)"></stop>
+                <stop offset="1" stop-color="var(--dress)"></stop>
+              </linearGradient>
+              <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="12" stdDeviation="11" flood-color="#6d234d" flood-opacity=".18"></feDropShadow>
+              </filter>
+              <filter id="tinyShadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#31132a" flood-opacity=".18"></feDropShadow>
+              </filter>
+            </defs>
+
+            <!-- Sahne arka planları -->
+            <g id="scene-pink" class="scene-layer">
+              <rect width="600" height="840" fill="#ffd9ea"></rect>
+              <circle cx="470" cy="125" r="82" fill="#fff1f7" opacity=".9"></circle>
+              <path d="M0 560 C130 515 220 615 330 560 C440 510 505 555 600 525 V840 H0Z" fill="#f5b8d5"></path>
+              <path d="M46 188 L90 80 L136 188Z" fill="#fff" opacity=".32"></path>
+              <circle cx="91" cy="78" r="13" fill="#fff"></circle>
+            </g>
+            <g id="scene-beach" class="scene-layer" opacity="0">
+              <rect width="600" height="840" fill="#87d9ff"></rect>
+              <circle cx="485" cy="125" r="58" fill="#ffe57a"></circle>
+              <path d="M0 430 Q140 385 300 430 T600 425 V590 H0Z" fill="#32b9dc"></path>
+              <path d="M0 520 Q180 480 350 535 T600 510 V840 H0Z" fill="#f4d28f"></path>
+              <path d="M70 510 Q122 365 175 510" stroke="#7a4e2b" stroke-width="13" fill="none"></path>
+              <path d="M118 395 Q61 371 39 419 Q91 428 118 395Z" fill="#2cb67d"></path>
+              <path d="M122 397 Q169 360 202 397 Q161 426 122 397Z" fill="#37c98c"></path>
+            </g>
+            <g id="scene-night" class="scene-layer" opacity="0">
+              <rect width="600" height="840" fill="#16143d"></rect>
+              <circle cx="464" cy="118" r="62" fill="#fff6c3"></circle>
+              <circle cx="486" cy="102" r="62" fill="#16143d"></circle>
+              <g fill="#fff" opacity=".85">
+                <circle cx="78" cy="95" r="4"></circle><circle cx="173" cy="154" r="3"></circle><circle cx="310" cy="86" r="4"></circle><circle cx="540" cy="215" r="3"></circle><circle cx="382" cy="185" r="2"></circle>
+              </g>
+              <path d="M0 530 L75 492 L122 526 L194 468 L256 526 L337 476 L410 521 L489 456 L600 505 V840 H0Z" fill="#29245d"></path>
+              <path d="M0 665 Q150 615 300 664 T600 644 V840 H0Z" fill="#3b2864"></path>
+            </g>
+            <g id="scene-garden" class="scene-layer" opacity="0">
+              <rect width="600" height="840" fill="#c5ecff"></rect>
+              <circle cx="470" cy="120" r="62" fill="#fff3a5"></circle>
+              <path d="M0 520 Q130 450 250 520 Q375 435 600 520 V840 H0Z" fill="#72c67d"></path>
+              <path d="M0 650 Q130 565 260 650 Q410 540 600 635 V840 H0Z" fill="#49a95d"></path>
+              <g fill="#ff7eb6"><circle cx="80" cy="610" r="12"></circle><circle cx="520" cy="590" r="13"></circle><circle cx="445" cy="690" r="10"></circle></g>
+            </g>
+            <g id="scene-snow" class="scene-layer" opacity="0">
+              <rect width="600" height="840" fill="#b9dcf5"></rect>
+              <path d="M0 480 L125 255 L250 480 L365 300 L530 480 L600 430 V840 H0Z" fill="#eaf6ff"></path>
+              <path d="M0 620 Q150 550 300 620 T600 600 V840 H0Z" fill="#fff"></path>
+              <g fill="#fff" opacity=".9"><circle cx="85" cy="100" r="6"></circle><circle cx="205" cy="180" r="5"></circle><circle cx="370" cy="100" r="7"></circle><circle cx="520" cy="225" r="5"></circle></g>
+            </g>
+
+            <ellipse cx="300" cy="776" rx="145" ry="25" fill="#54243d" opacity=".18"></ellipse>
+
+            <!-- Saç arkası -->
+            <g id="hairBack" fill="url(#hairGradient)" filter="url(#tinyShadow)">
+              <path id="hairBackPath" d="M197 178 Q190 74 300 69 Q411 76 402 184 L424 413 Q377 454 340 405 L300 475 L260 405 Q218 456 177 413Z"></path>
+            </g>
+
+            <!-- Bacaklar -->
+            <g fill="url(#skinGradient)">
+              <path d="M254 483 Q242 585 248 708 L228 773 Q224 791 244 795 Q265 797 271 777 L292 711 L301 525Z"></path>
+              <path d="M346 483 Q358 585 352 708 L372 773 Q376 791 356 795 Q335 797 329 777 L308 711 L299 525Z"></path>
+            </g>
+
+            <!-- Kollar -->
+            <g fill="url(#skinGradient)">
+              <path d="M242 293 Q198 320 185 373 L165 500 Q161 520 179 524 Q198 526 204 505 L225 397 L259 341Z"></path>
+              <path d="M358 293 Q402 320 415 373 L435 500 Q439 520 421 524 Q402 526 396 505 L375 397 L341 341Z"></path>
+            </g>
+
+            <!-- Gövde ve iç kıyafet -->
+            <path d="M252 267 Q269 247 300 250 Q331 247 348 267 L368 385 Q356 456 343 505 L257 505 Q244 456 232 385Z" fill="url(#skinGradient)"></path>
+            <path d="M252 320 Q300 344 348 320 L340 414 Q300 432 260 414Z" fill="#f2a9c8"></path>
+            <path d="M258 411 L342 411 L354 510 L246 510Z" fill="#e994bc"></path>
+
+            <!-- Alt kıyafetler -->
+            <g id="bottomLayer" filter="url(#softShadow)">
+              <path id="bottom-skirt" d="M247 405 L353 405 L395 551 Q300 586 205 551Z" fill="var(--bottom)"></path>
+              <path id="bottom-pants" d="M247 405 L353 405 L344 662 L304 662 L300 486 L296 662 L256 662Z" fill="var(--bottom)" opacity="0"></path>
+              <path id="bottom-shorts" d="M247 405 L353 405 L360 492 L314 492 L300 454 L286 492 L240 492Z" fill="var(--bottom)" opacity="0"></path>
+              <path id="bottom-widepants" d="M247 405 L353 405 L371 664 L310 664 L300 492 L290 664 L229 664Z" fill="var(--bottom)" opacity="0"></path>
+            </g>
+
+            <!-- Üst kıyafetler -->
+            <g id="topLayer" filter="url(#softShadow)">
+              <path id="top-crop" d="M246 302 Q300 332 354 302 L345 391 Q300 410 255 391Z" fill="var(--top)"></path>
+              <path id="top-blouse" d="M239 290 Q300 328 361 290 L365 422 Q300 448 235 422Z" fill="var(--top)" opacity="0"></path>
+              <path id="top-corset" d="M254 296 Q300 322 346 296 L340 427 Q300 449 260 427Z" fill="var(--top)" opacity="0"></path>
+              <path id="top-sweater" d="M232 287 Q300 326 368 287 L382 435 Q300 468 218 435Z" fill="var(--top)" opacity="0"></path>
+            </g>
+
+            <!-- Elbiseler -->
+            <g id="dressLayer" opacity="0" filter="url(#softShadow)">
+              <path id="dressBodice" d="M247 292 Q300 326 353 292 L345 410 Q300 437 255 410Z" fill="url(#dressGradient)"></path>
+              <path id="dress-party" d="M252 397 L348 397 L422 587 Q300 647 178 587Z" fill="url(#dressGradient)"></path>
+              <path id="dress-gown" d="M252 397 L348 397 L442 702 Q300 767 158 702Z" fill="url(#dressGradient)" opacity="0"></path>
+              <path id="dress-mini" d="M252 397 L348 397 L380 535 Q300 566 220 535Z" fill="url(#dressGradient)" opacity="0"></path>
+              <path id="dress-mermaid" d="M252 397 L348 397 L360 618 L413 710 Q300 760 187 710 L240 618Z" fill="url(#dressGradient)" opacity="0"></path>
+              <path id="dressTrim" d="M222 557 Q300 590 378 557" fill="none" stroke="#fff" stroke-width="8" opacity=".62"></path>
+            </g>
+
+            <!-- Ceketler -->
+            <g id="jacketLayer" filter="url(#softShadow)" opacity="0">
+              <path id="jacket-cropped-left" d="M239 291 Q205 307 198 370 L231 425 L269 397 L260 305Z" fill="var(--jacket)"></path>
+              <path id="jacket-cropped-right" d="M361 291 Q395 307 402 370 L369 425 L331 397 L340 305Z" fill="var(--jacket)"></path>
+              <path id="jacket-long-left" d="M239 285 Q195 305 188 382 L211 511 L266 480 L260 301Z" fill="var(--jacket)" opacity="0"></path>
+              <path id="jacket-long-right" d="M361 285 Q405 305 412 382 L389 511 L334 480 L340 301Z" fill="var(--jacket)" opacity="0"></path>
+            </g>
+
+            <!-- Boyun ve yüz -->
+            <path d="M276 223 L324 223 L329 275 Q300 297 271 275Z" fill="url(#skinGradient)"></path>
+            <ellipse cx="300" cy="166" rx="79" ry="94" fill="url(#skinGradient)"></ellipse>
+
+            <!-- Saç önü -->
+            <g id="hairFront" fill="url(#hairGradient)">
+              <path id="hairFrontPath" d="M222 161 Q210 79 299 71 Q389 80 378 162 Q350 112 309 112 Q264 110 233 162Z"></path>
+              <path d="M226 164 Q234 119 260 99 Q238 164 252 230 Q222 210 226 164Z"></path>
+              <path d="M374 164 Q365 115 340 99 Q362 164 348 231 Q378 208 374 164Z"></path>
+            </g>
+
+            <!-- Makyaj ve yüz detayları -->
+            <path d="M256 160 Q272 149 288 161" fill="none" stroke="#5d3a36" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M312 161 Q328 149 344 160" fill="none" stroke="#5d3a36" stroke-width="5" stroke-linecap="round"></path>
+            <ellipse cx="275" cy="167" rx="6" ry="9" fill="var(--eyes)"></ellipse>
+            <ellipse cx="325" cy="167" rx="6" ry="9" fill="var(--eyes)"></ellipse>
+            <circle cx="277" cy="164" r="2" fill="#fff"></circle><circle cx="327" cy="164" r="2" fill="#fff"></circle>
+            <path d="M298 174 Q293 193 301 197" fill="none" stroke="#d38f78" stroke-width="3"></path>
+            <path d="M273 218 Q300 235 327 218 Q300 251 273 218Z" fill="var(--lips)"></path>
+            <ellipse cx="249" cy="198" rx="17" ry="8" fill="#ed7c91" opacity=".25"></ellipse>
+            <ellipse cx="351" cy="198" rx="17" ry="8" fill="#ed7c91" opacity=".25"></ellipse>
+
+            <!-- Aksesuarlar -->
+            <g id="necklace" opacity="0" filter="url(#tinyShadow)">
+              <path d="M270 268 Q300 306 330 268" fill="none" stroke="#ffd54d" stroke-width="6"></path>
+              <circle cx="300" cy="303" r="11" fill="#f72585" stroke="#fff" stroke-width="3"></circle>
+            </g>
+            <g id="glasses" opacity="0" fill="none" stroke="#33203a" stroke-width="6">
+              <circle cx="271" cy="165" r="23"></circle><circle cx="329" cy="165" r="23"></circle><path d="M294 165 H306"></path>
+            </g>
+            <g id="crown" opacity="0" filter="url(#tinyShadow)">
+              <path d="M250 90 L264 46 L291 80 L316 39 L337 82 L363 49 L354 102 Q300 119 246 102Z" fill="#ffd84f" stroke="#fff2a8" stroke-width="5"></path>
+              <circle cx="316" cy="63" r="7" fill="#f72585"></circle>
+            </g>
+            <g id="bag" opacity="0" filter="url(#softShadow)">
+              <path d="M402 394 Q462 423 449 538" fill="none" stroke="#5e3854" stroke-width="9"></path>
+              <rect x="410" y="500" width="81" height="72" rx="18" fill="var(--bag)"></rect>
+              <path d="M431 500 Q450 467 470 500" fill="none" stroke="#fff" stroke-width="6" opacity=".55"></path>
+            </g>
+            <g id="earrings" opacity="0">
+              <circle cx="222" cy="193" r="8" fill="#ffd84f"></circle><circle cx="378" cy="193" r="8" fill="#ffd84f"></circle>
+              <path d="M222 200 V219 M378 200 V219" stroke="#ffd84f" stroke-width="5"></path>
+            </g>
+
+            <!-- Ayakkabılar -->
+            <g id="shoesLayer" fill="var(--shoe)" filter="url(#tinyShadow)">
+              <g id="shoe-heels"><path d="M225 770 Q254 765 274 778 L271 808 L210 808 Q208 785 225 770Z"></path><path d="M375 770 Q346 765 326 778 L329 808 L390 808 Q392 785 375 770Z"></path></g>
+              <g id="shoe-sneakers" opacity="0"><path d="M222 766 Q257 767 277 783 L276 810 H205 Q202 783 222 766Z"></path><path d="M378 766 Q343 767 323 783 L324 810 H395 Q398 783 378 766Z"></path></g>
+              <g id="shoe-boots" opacity="0"><path d="M225 719 H272 L276 810 H208 Q205 780 225 762Z"></path><path d="M375 719 H328 L324 810 H392 Q395 780 375 762Z"></path></g>
+              <g id="shoe-sandals" opacity="0"><path d="M221 784 Q250 773 276 790 L274 808 H211Z"></path><path d="M379 784 Q350 773 324 790 L326 808 H389Z"></path></g>
+            </g>
+          </svg>
+          <div class="confetti" id="confetti" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <aside class="wardrobe-card glass-card" aria-label="Gardırop">
+        <nav class="tabs" aria-label="Gardırop kategorileri">
+          <button class="tab active" data-panel="challengePanel" type="button"><span>🏆</span> Görev</button>
+          <button class="tab" data-panel="clothesPanel" type="button"><span>👗</span> Kıyafet</button>
+          <button class="tab" data-panel="beautyPanel" type="button"><span>💇</span> Güzellik</button>
+          <button class="tab" data-panel="accessoryPanel" type="button"><span>💎</span> Aksesuar</button>
+          <button class="tab" data-panel="scenePanel" type="button"><span>🌈</span> Sahne</button>
+          <button class="tab" data-panel="savedPanel" type="button"><span>💾</span> Kayıtlar</button>
+        </nav>
+
+        <div class="panel-scroller">
+          <section class="wardrobe-panel active" id="challengePanel">
+            <div class="panel-heading"><div><span class="eyebrow">Moda görevleri</span><h2>Bir tema seç</h2></div><span class="counter" id="challengeCounter">1 / 5</span></div>
+            <div class="challenge-grid" id="challengeGrid"></div>
+            <div class="mission-card">
+              <span>Hedefler</span>
+              <ul id="missionGoals"></ul>
+            </div>
+          </section>
+
+          <section class="wardrobe-panel" id="clothesPanel">
+            <div class="panel-heading"><div><span class="eyebrow">Gardırop</span><h2>Kombinini oluştur</h2></div></div>
+            <div id="clothesControls"></div>
+          </section>
+
+          <section class="wardrobe-panel" id="beautyPanel">
+            <div class="panel-heading"><div><span class="eyebrow">Güzellik stüdyosu</span><h2>Görünümü tamamla</h2></div></div>
+            <div id="beautyControls"></div>
+          </section>
+
+          <section class="wardrobe-panel" id="accessoryPanel">
+            <div class="panel-heading"><div><span class="eyebrow">Son dokunuş</span><h2>Aksesuar seç</h2></div></div>
+            <div id="accessoryControls"></div>
+          </section>
+
+          <section class="wardrobe-panel" id="scenePanel">
+            <div class="panel-heading"><div><span class="eyebrow">Fotoğraf alanı</span><h2>Sahneni değiştir</h2></div></div>
+            <div id="sceneControls"></div>
+          </section>
+
+          <section class="wardrobe-panel" id="savedPanel">
+            <div class="panel-heading"><div><span class="eyebrow">Yerel kayıtlar</span><h2>Kaydedilen kombinler</h2></div><button class="text-button" id="clearSavedButton" type="button">Tümünü sil</button></div>
+            <p class="muted-copy">Kombinler yalnızca bu tarayıcıda saklanır.</p>
+            <div class="saved-grid" id="savedGrid"></div>
+          </section>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="site-footer">
+      <div class="creator-credit">
+        <p>Pink Fashion Studio · HTML, CSS ve JavaScript ile geliştirildi.</p>
+        <p class="signature" aria-label="Mert Demir imzası">Mert Demir</p>
+        <p class="dedication">Sude için sevgiyle yapıldı <span aria-hidden="true">💗</span></p>
+      </div>
+      <p class="footer-note">Hayran yapımı eğitim projesidir; Mattel veya Barbie markasıyla bağlantılı değildir.</p>
+    </footer>
+  </main>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+
+  <dialog class="result-dialog" id="resultDialog">
+    <div class="result-icon" id="resultIcon">🌟</div>
+    <span class="eyebrow">Moda jürisi sonucu</span>
+    <h2 id="resultTitle">Harika görünüyorsun!</h2>
+    <div class="result-stars" id="resultStars">★★★★★</div>
+    <strong id="resultScore">100 / 100</strong>
+    <p id="resultMessage"></p>
+    <button class="primary-button" id="closeResultButton" type="button">Devam et</button>
+  </dialog>
+
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>
