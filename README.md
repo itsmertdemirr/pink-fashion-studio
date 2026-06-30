@@ -101,7 +101,7 @@ Kıyafet ve görev verileri `assets/js/app.js` içindeki `data` nesnesinde bulun
 
 ## Geliştirici
 
-**Mert Demir** tarafından geliştirilmiş ve **Sude için sevgiyle hazırlanmıştır.** 💗
+**Mert Demir** tarafından geliştirilmiştir.
 
 ## Lisans ve marka notu
 
